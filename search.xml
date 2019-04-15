@@ -4,6 +4,9 @@
     <title><![CDATA[Post test]]></title>
     <url>%2Ffenzai%2F2019%2F04%2F12%2FPost-test%2F</url>
     <content type="text"><![CDATA[文章发布测试]]></content>
+      <tags>
+        <tag>test</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[Hello World]]></title>
