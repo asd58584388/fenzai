@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[Post test]]></title>
-    <url>%2Ffenzai%2F2019%2F04%2F12%2FPost-test%2F</url>
-    <content type="text"><![CDATA[文章发布测试]]></content>
+    <title><![CDATA[爬楼梯问题的几种解法]]></title>
+    <url>%2Ffenzai%2F2019%2F04%2F22%2F%E7%88%AC%E6%A5%BC%E6%A2%AF%2F</url>
+    <content type="text"><![CDATA[原文：https://leetcode-cn.com/articles/climbing-stairs/原文有些讲的个人感觉不够详细，以下是自己的一些理解方法一：暴力法暴力法就是对所有可能的爬楼梯的阶数进行组合，比较简单，原文讲的已经够清楚了 1234567891011121314public class Solution &#123; public int climbStairs(int n) &#123; climb_Stairs(0, n); &#125; public int climb_Stairs(int i, int n) &#123; if (i &gt; n) &#123; return 0; &#125; if (i == n) &#123; return 1; &#125; return climb_Stairs(i + 1, n) + climb_Stairs(i + 2, n); &#125;&#125; 时间复杂度：O(2^n) 空间复杂度：O(n) 方法二：记忆化递归12345678910111213141516171819public class Solution &#123; public int climbStairs(int n) &#123; int memo[] = new int[n + 1]; return climb_Stairs(0, n, memo); &#125; public int climb_Stairs(int i, int n, int memo[]) &#123; if (i &gt; n) &#123; return 0; &#125; if (i == n) &#123; return 1; &#125; if (memo[i] &gt; 0) &#123; return memo[i]; &#125; memo[i] = climb_Stairs(i + 1, n, memo) + climb_Stairs(i + 2, n, memo); return memo[i]; &#125;&#125; 方法一中会计算的结果会出现冗余，因为假设当n=7时，可以有1 1 1 2 2和 1 2 2 2两种方法可以爬到顶，但是当爬了 1 1 1 2后，共爬了5个阶梯，最后爬的阶数肯定是2，也就是说，当递归到 1 2 2（5）时其实就不用继续递归了（因为肯定是2），但是方法一还是会继续做下去，就产生了冗余，方法二通过memo数组，当i=5时，因为11122已经递归过了直接返回memo[i]的值就可以。 时间复杂度：O(n) 。树形递归的大小可以达到 n 。 空间复杂度：O(n) 。递归树的深度可以达到 n 。 方法三:动态规划1234567891011121314public class Solution &#123; public int climbStairs(int n) &#123; if (n == 1) &#123; return 1; &#125; int[] dp = new int[n + 1]; dp[1] = 1; dp[2] = 2; for (int i = 3; i &lt;= n; i++) &#123; dp[i] = dp[i - 1] + dp[i - 2]; &#125; return dp[n]; &#125;&#125; 这个方法很简洁，也很容易理解 时间复杂度：O(n),单循环到n。 空间复杂度：O(n),dp数组用了n的空间]]></content>
+      <categories>
+        <category>学习记录</category>
+      </categories>
       <tags>
-        <tag>test</tag>
+        <tag>递归</tag>
+        <tag>斐波那契</tag>
       </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[Hello World]]></title>
-    <url>%2Ffenzai%2F2019%2F04%2F12%2Fhello-world%2F</url>
-    <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
   </entry>
 </search>
